@@ -5,4 +5,5 @@ you have to download firefox-*.tar.gz and replace /usr/lib64/ with
 
 sudo cp -r source /usr/lib64/
 
-this will fix most of firefox problems
+this will fix camera and mic problem 
+it will not fix widevine. widevine is not supported on arm platform
