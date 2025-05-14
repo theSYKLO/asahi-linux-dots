@@ -1,6 +1,6 @@
-## Before using this
+## Before using this repo
 this repository is for having a fast fresh install of fedora asahi remix <br/>
-this repo and every dot file is made with personal preference of me
+this repo and every dot file is made with personal use in mind so use this repo with this in mind
 
 ## Hyprland dotfiles
 hyprland dotfiles are made on top of typecraft dot files. <br/>
@@ -10,9 +10,9 @@ hyprland dotfiles are made on top of typecraft dot files. <br/>
 ## firefox no Audio/Video input fix
 if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
-step 1: you have to download Firefox from the main website <br/>
++ step 1: you have to download Firefox from the main website <br/>
 
-step 2: extract `firefox-*.tar.gz` and replace it content with `/usr/lib64/firefox` using: <br/>
++ step 2: extract `firefox-*.tar.gz` and replace it content with `/usr/lib64/firefox` using: <br/>
 
 	rm -rf /usr/lib64/firfox <br/>
 	sudo cp -r */firefox /usr/lib64/ <br/>
