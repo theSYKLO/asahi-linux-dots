@@ -41,7 +41,7 @@
       "icon-size": 20
   },
   "hyprland/language": {
-  "format-en": "⌨  En",
-  "format-fa": "⌨  Fa"
+    "format-en": "<span size='10000'>⌨</span> En",
+    "format-fa": "<span size='10000'>⌨</span> Fa"
   }
 }
