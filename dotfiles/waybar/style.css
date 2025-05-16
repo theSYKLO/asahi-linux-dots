@@ -55,7 +55,7 @@ button:hover {
 }
 
 #pulseaudio,
-#custom-kb-layout,
+#language,
 #clock,
 #battery,
 #cpu,
@@ -76,8 +76,8 @@ button:hover {
   padding-right: 4px;
 }
 
-#custom-kb-layout {
-    color: @lavender;
+#language {
+    color: @flamingo;
     border-bottom: 2px solid @lavender;
 }
 

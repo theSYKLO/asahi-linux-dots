@@ -2,7 +2,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "clock", "custom/kb-layout", "tray"]
+  "modules-right": ["network", "pulseaudio", "battery", "hyprland/language", "clock", "tray"]
   ,"clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -40,10 +40,8 @@
       "spacing": 10,
       "icon-size": 20
   },
-  "custom/kb-layout": {
-      "exec": "~/.config/waybar/kb-layout.sh",
-      "interval": 1,
-      "format": "⌨  {}",
-      "tooltip": false
+  "hyprland/language": {
+  "format-en": "⌨  En",
+  "format-fa": "⌨  Fa"
   }
 }
