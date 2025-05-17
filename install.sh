@@ -9,10 +9,10 @@ echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com
 
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
 
-yes | sudo dnf install code cloudflare-warp git gh gcc g++ make cmake vim nvim strawberry
+yes | sudo dnf install code cloudflare-warp git gh gcc g++ make cmake vim nvim strawberry flatpak snapd
 
 yes | sudo snap install telegram-asahi
 
-yes | sudo flatpak install me.timschneeberger.GalaxyBudsClient
+yes | sudo flathub install me.timschneeberger.GalaxyBudsClient
 
 yes | sudo dnf update && reboot
