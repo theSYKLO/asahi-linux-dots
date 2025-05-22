@@ -2,8 +2,16 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["network", "pulseaudio", "battery", "hyprland/language", "clock", "tray"]
-  ,"clock": {
+  "modules-right": [
+	  "network",
+	  "pulseaudio",
+	  "battery",
+	  "hyprland/language",
+	  "clock",
+	  "power-profiles-daemon",
+	  "tray"
+  ],
+  "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
@@ -12,33 +20,44 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "<span size='13000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='13000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["", "", "", "", ""],
+    "format": "<span size='19000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='19000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='19000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='10000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-plugged": "<span size='19000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-alt": "<span size='19000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='19000' foreground='#B1E3AD'> </span>{capacity}%",
+    "format-icons": ["<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>"],
     "tooltip-format": "{time}"
   },
   "network": {
-    "format-wifi": "<span size='13000' foreground='#f5e0dc'>  </span>{essid}",
-    "format-ethernet": "<span size='13000' foreground='#f5e0dc'>󰤭  </span>e Disconnected",
+    "format-wifi": "<span size='19000' foreground='#f5e0dc'> </span>{essid}",
+    "format-ethernet": "<span size='19000' foreground='#f5e0dc'>󰤭 </span>e Disconnected",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='13000' foreground='#f5e0dc'>  </span>Disconnected",
+    "format-disconnected": "<span size='19000' foreground='#f5e0dc'> </span>Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
       "format": "{icon}  {volume}%",
-      "format-muted": "",
+      "format-muted": "<span size='19000'></span>",
       "format-icons": {
-          "default": ["", "", " "]
+          "default": ["<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span> "]
       }
   },
   "tray": {
       "spacing": 10,
       "icon-size": 20
+  },
+  "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "<span size='15000'></span>",
+        "performance": "<span size='15000'></span>",
+        "balanced": "<span size='15000'></span>",
+        "power-saver": "<span size='15000'></span>"
+      }
   },
   "hyprland/language": {
     "format-en": "<span size='10000'>⌨</span> En",
