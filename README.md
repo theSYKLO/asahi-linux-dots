@@ -19,8 +19,8 @@ if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
 + step 2: extract `firefox-*.tar.gz` and replace it content with `/usr/lib64/firefox` using: <br/>
 
-		rm -rf /usr/lib64/firfox <br/>
-		sudo cp -r */firefox /usr/lib64/ <br/>
+		rm -rf /usr/lib64/firfox
+		sudo cp -r */firefox /usr/lib64/
 
 this will fix camera and mic problem and give you a better overall experience<sup>*</sup> <br/>
 ><sup>*</sup> this will not fix widevine. widevine is not supported on arm platform
