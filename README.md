@@ -12,7 +12,7 @@ hyprland dotfiles are made on top of typecraft dot files. <br/>
 >if you want you can get the dotfile from here:<br/>
 >https://github.com/typecraft-dev/dotfiles
 
-configs need `CaskaydiaCove Nerd Font` that you have to install it your self <br/>
+configs need `CaskaydiaCove Nerd Font` that you have to install it yourself <br/>
 but rest of the stuff is managed with install.sh file <br/>
 
 ## firefox no Audio/Video input fix
