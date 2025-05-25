@@ -1,9 +1,9 @@
 @import "mocha.css"; 
 
 * {
-    font-family: "MesloLGS Nerd Font Mono Bold", "Vazirmatn", monospace;
+    font-family: "CaskaydiaCove Nerd Font", "Vazirmatn", monospace;
     font-size: 16px;
-    min-height: 0;
+    min-height: 25px;
     font-weight: bold;
 }
 

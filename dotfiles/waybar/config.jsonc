@@ -12,7 +12,7 @@
 	  "tray"
   ],
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
+    "format": "<span foreground='#f5c2e7'>  </span>{:%a %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "battery": {
@@ -20,30 +20,44 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "<span size='19000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
-    "format-warning": "<span size='19000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
-    "format-critical": "<span size='19000' foreground='#E38C8F'>{icon} </span> {capacity}%",
-    "format-charging": "<span size='10000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-plugged": "<span size='19000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-alt": "<span size='19000' foreground='#B1E3AD'>{icon} </span> {time}",
-    "format-full": "<span size='19000' foreground='#B1E3AD'> </span>{capacity}%",
-    "format-icons": ["<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span>"],
+    "format": "<span size='12000' foreground='#a6e3a1'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='12000' foreground='#B1E3AD'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='12000' foreground='#E38C8F'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
+    "format-plugged": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
+    "format-alt": "<span size='12000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-full": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
+    "format-icons": ["<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>"],
     "tooltip-format": "{time}"
   },
   "network": {
-    "format-wifi": "<span size='19000' foreground='#f5e0dc'> </span>{essid}",
-    "format-ethernet": "<span size='19000' foreground='#f5e0dc'>󰤭 </span>e Disconnected",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "<span size='19000' foreground='#f5e0dc'> </span>Disconnected",
+    "format-wifi": "<span size='12000' foreground='#f5e0dc'>  </span>{essid}",
+    "format-ethernet": "<span size='12000' foreground='#f5e0dc'>󰤭  </span>Disconnected",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "<span size='12000' foreground='#f5e0dc'>  </span>Disconnected",
     "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "<span size='19000'></span>",
-      "format-icons": {
-          "default": ["<span size='19000'></span>", "<span size='19000'></span>", "<span size='19000'></span> "]
-      }
-  },
+	"format": "{format_source} {icon} {volume}%",
+	"format-muted": "{format_source} <span size='12000'></span>",
+	"format-bluetooth": "{format_source} {icon} {volume}%",
+        "format-bluetooth-muted": "{format_source} {icon}",
+	"format-icons": {
+	    "headphone": "<span size='12000'></span>",
+            "hands-free": "<span size='12000'></span>",
+            "headset": "<span size='12000'></span>",
+            "phone": "<span size='12000'></span>",
+            "portable": "<span size='12000'></span>",
+            "car": "<span size='12000'></span>",
+	    "default": [
+		    "<span size='12000'></span>",
+		    "<span size='12000'></span>",
+		    "<span size='12000'></span> "
+	    ]
+	},
+	"format-source":"<span size='12000'> </span>",
+	"format-source-muted": "<span size='12000'> </span>"
+  },  
   "tray": {
       "spacing": 10,
       "icon-size": 20
@@ -53,14 +67,14 @@
       "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
       "tooltip": true,
       "format-icons": {
-        "default": "<span size='15000'></span>",
-        "performance": "<span size='15000'></span>",
-        "balanced": "<span size='15000'></span>",
-        "power-saver": "<span size='15000'></span>"
+        "default": "<span size='12000'>  </span>",
+        "performance": "<span size='12000'>  </span>",
+        "balanced": "<span size='12000'>  </span>",
+        "power-saver": "<span size='12000'>  </span>"
       }
   },
   "hyprland/language": {
-    "format-en": "<span size='10000'>⌨</span> En",
-    "format-fa": "<span size='10000'>⌨</span> Fa"
+    "format-en": "<span size='12000'>⌨</span> En",
+    "format-fa": "<span size='12000'>⌨</span> Fa"
   }
 }
