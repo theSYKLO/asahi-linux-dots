@@ -24,5 +24,14 @@ mkdir clipse
 cd clipse
 wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
 sudo mv clipse /usr/local/bin
+cd ..
+rm -rf bluetui
+
+git clone https://github.com/pythops/bluetui
+cd bluetui
+cargo build --release
+sudo mv target/release/bluetui
+cd ..
+rm -rf bluetui
 
 sudo dnf update -y && reboot
