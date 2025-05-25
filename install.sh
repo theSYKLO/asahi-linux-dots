@@ -18,7 +18,7 @@ yes | flatpak install flathub me.timschneeberger.GalaxyBudsClient
 
 sudo dnf copr enable solopasha/hyprland
 
-sudo dnf install -y hyprland nm-applet dunst warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
+sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
 
 mkdir clipse
 cd clipse
