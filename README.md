@@ -27,5 +27,5 @@ this will fix camera and mic problem and give you a better overall experience<su
 
 ## To-Do list
 
-- [ ] update install.sh file for automatic install of every app needed for fedora asahi remix (KDE and Hyprland)
+- [x] update install.sh file for automatic install of every app needed for fedora asahi remix (KDE and Hyprland)
 - [ ] custom keyboard binding to set control to ALT, option to SUPER, command to CONTROL
