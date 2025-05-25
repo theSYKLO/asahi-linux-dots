@@ -1,7 +1,7 @@
 {
   "position": "top",
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": ["hyprland/workspaces","hyprland/window"],
+  "modules-center": [],
   "modules-right": [
 	  "network",
 	  "pulseaudio",
