@@ -3,9 +3,9 @@ this repository is for having a fast fresh install of fedora asahi remix <br/>
 this repo and every dot file is made with personal use in mind so use this repo with this in mind
 
 ## Take a look at the final result
-![how it's look without any apps open]
+![how it's look without any apps open](./Screenshots/empty.png?raw=true)
 
-![after opening some apps]
+![after opening some apps](./Screenshots/appsOpen.png?raw=true)
 
 ## Hyprland dotfiles
 hyprland dotfiles are made on top of typecraft dot files. <br/>
