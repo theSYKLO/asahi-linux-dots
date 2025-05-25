@@ -24,8 +24,3 @@ if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
 this will fix camera and mic problem and give you a better overall experience<sup>*</sup> <br/>
 ><sup>*</sup> this will not fix widevine. widevine is not supported on arm platform
-
-## To-Do list
-
-- [x] update install.sh file for automatic install of every app needed for fedora asahi remix (KDE and Hyprland)
-- [ ] custom keyboard binding to set control to ALT, option to SUPER, command to CONTROL
