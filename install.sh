@@ -16,4 +16,13 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 yes | sudo snap install telegram-asahi
 yes | flatpak install flathub me.timschneeberger.GalaxyBudsClient
 
+sudo dnf copr enable solopasha/hyprland
+
+sudo dnf install -y hyprland nm-applet dunst warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
+
+mkdir clipse
+cd clipse
+wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
+sudo mv clipse /usr/local/bin
+
 sudo dnf update -y && reboot
