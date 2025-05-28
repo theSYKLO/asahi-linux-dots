@@ -7,7 +7,25 @@ this repo and every dot file is made with personal use in mind so use this repo 
 
 ![after opening some apps](./Screenshots/appsOpen.png?raw=true)
 
-## Hyprland dotfiles
+## Prerequisites
+1. Fedora Asahi remix
+>this repo is created for asahi linux and I don't guarantee it will work on Fedora <br/>
+>but you can try it <br/>
+
+2. git
+
+## Setup
+for this you just need to run `install.sh` use the fallowing command to install: <br/>
+
+	git clone https://github.com/theSYKLO/asahi-linux.dots.git
+  	cd asahi-linux.dots
+	chmod +x install.sh
+	./install.sh
+ 
+be aware that this script will restart your system on finishing so make sure your not doing anything else SPECIALLY DNF <br/>
+because that will interrupt the script (two dnf command can't be run at same time) <br/>
+
+## Hyprland
 hyprland dotfiles are made on top of typecraft dot files. <br/>
 >if you want you can get the dotfile from here:<br/>
 >https://github.com/typecraft-dev/dotfiles
