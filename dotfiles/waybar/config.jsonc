@@ -56,7 +56,8 @@
 	    ]
 	},
 	"format-source":"<span size='12000'> </span>",
-	"format-source-muted": "<span size='12000'> </span>"
+	"format-source-muted": "<span size='12000'> </span>",
+	"on-click": "pavucontrol-qt"
   },  
   "tray": {
       "spacing": 10,
