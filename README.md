@@ -22,7 +22,7 @@ for this you just need to run `install.sh` use the fallowing command to install:
 	chmod +x install.sh
 	./install.sh
  
-be aware that this script will restart your system on finishing so make sure your not doing anything else SPECIALLY DNF <br/>
+be aware that this script will restart your system on finishing so make sure your not doing anything else SPECIALLY DNF
 because that will interrupt the script (two dnf command can't be run at same time) <br/>
 
 ## Hyprland
