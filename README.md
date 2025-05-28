@@ -15,6 +15,9 @@ hyprland dotfiles are made on top of typecraft dot files. <br/>
 configs need `CaskaydiaCove Nerd Font` that you have to install it yourself <br/>
 but rest of the stuff is managed with install.sh file <br/>
 
+there is custom vscode bin in `dotfiles/custom-bins` that will fix blury text in vscode because of scaling <br/>
+you don't have to do anything `install.sh` will handle the file placement
+
 ## firefox no Audio/Video input fix
 if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
