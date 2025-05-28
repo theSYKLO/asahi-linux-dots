@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Run VS Code with Wayland flags under Hyprland
+if [ "$XDG_SESSION_DESKTOP" = "Hyprland" ] || [ "$DESKTOP_SESSION" = "Hyprland" ]; then
+  exec /usr/share/code/code --ozone-platform=wayland --enable-features=WaylandWindowDecorations "$@"
+else
+  exec /usr/share/code/code "$@"
+fi
+
