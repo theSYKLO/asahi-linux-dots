@@ -26,6 +26,7 @@
     "format-charging": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
     "format-plugged": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
     "format-alt": "<span size='12000' foreground='#B1E3AD'>{icon} </span> {time}",
+    "format-charging-alt": "<span size='12000' foreground='#B1E3AD'>{icon} </span> {time}",
     "format-full": "<span size='12000' foreground='#B1E3AD'>  </span>{capacity}%",
     "format-icons": ["<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>", "<span size='12000'></span>"],
     "tooltip-format": "{time}"
