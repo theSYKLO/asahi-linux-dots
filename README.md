@@ -41,10 +41,13 @@ if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
 + step 1: you have to download Firefox from the main website <br/>
 
-+ step 2: extract `firefox-*.tar.gz` and replace it content with `/usr/lib64/firefox` using: <br/>
-
++ step 2: extract `firefox-*.tar.gz` (I assumed that the extracted folder is in `~/Downloads/firefox`) and replace it content with `/usr/lib64/firefox` using: <br/>
+        sudo cp -r /usr/lib64/firefox/defaults/pref Downloads/firefox/defaults/
 		rm -rf /usr/lib64/firfox
-		sudo cp -r */firefox /usr/lib64/
+		sudo cp -r Downloads/firefox /usr/lib64/
 
-this will fix camera and mic problem and give you a better overall experience<sup>*</sup> <br/>
-><sup>*</sup> this will not fix widevine. you need to run `sudo widevine-install` command for that, Update it doen't work with mozilla website version so you either shoose having webcam and mic or having widevine for things like spotify -_- , I will try to fix it and update this part If I found any fix :)
+and install Widevine with:
+        sudo widevine-installer
+
+this will fix camera and mic problem, widevine and give you a better overall experience
+
