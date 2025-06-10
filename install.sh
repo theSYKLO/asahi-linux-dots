@@ -39,6 +39,6 @@ cargo build --release
 sudo mv target/release/bluetui /usr/local/bin
 cd ..
 
-sudo widevine-installer
+#sudo widevine-installer
 
 sudo dnf update -y && reboot
