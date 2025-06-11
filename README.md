@@ -9,10 +9,10 @@ this repo and every dot file is made with personal use in mind so use this repo 
 
 ## Prerequisites
 1. Fedora Asahi remix
->this repo is created for asahi linux and I don't guarantee it will work on Fedora <br/>
->but you can try it <br/>
-
 2. git
+
+> [!CAUTION]
+>this repo is created for asahi linux and I don't guarantee it will work on Fedora but you can try it
 
 ## Setup
 for this you just need to run `install.sh` use the fallowing command to install: <br/>
@@ -36,19 +36,22 @@ but rest of the stuff is managed with install.sh file <br/>
 there is custom vscode bin in `dotfiles/custom-bins` that will fix blury text in vscode because of scaling <br/>
 you don't have to do anything `install.sh` will handle the file placement
 
-## firefox no Audio/Video input fix
+## firefox no Audio/Video input and Widevine fix
 if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 
 + step 1: you have to download Firefox from the main website <br/>
 
 + step 2: extract `firefox-*.tar.gz` (I assumed that the extracted folder is in `~/Downloads/firefox`) and replace it content using: <br/>
+> [!NOTE]
+>first line of command is for copying the custom asahi setting that make widevine installer work so we copy that before we delete the dnf firefox files and then place our official firefox in it
 
 		sudo cp -r /usr/lib64/firefox/defaults/pref Downloads/firefox/defaults/
 		rm -rf /usr/lib64/firfox
 		sudo cp -r Downloads/firefox /usr/lib64/
 
-and install Widevine with:
 
-	sudo widevine-installer
++ step 3: install Widevine with:
+
+		sudo widevine-installer
 
 this will fix camera and mic problem, widevine and give you a better overall experience
