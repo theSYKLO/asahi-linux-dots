@@ -60,30 +60,30 @@ else
   echo "✅ All packages installed successfully."
 fi
 
-# echo "📁 Setting up local bin directory and copying custom code launcher..."
-# if [ -d "$HOME/.local/bin" ]; then
-#   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
-# else
-#   mkdir -p "$HOME/.local/bin"
-#   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
-# fi
+echo "📁 Setting up local bin directory and copying custom code launcher..."
+if [ -d "$HOME/.local/bin" ]; then
+  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
+else
+  mkdir -p "$HOME/.local/bin"
+  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
+fi
 
-# echo "📦 Downloading and installing clipse..."
-# mkdir -p clipse
-# cd clipse
-# wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
-# sudo mv clipse /usr/local/bin
-# cd ..
+echo "📦 Downloading and installing clipse..."
+mkdir -p clipse
+cd clipse
+wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
+sudo mv clipse /usr/local/bin
+cd ..
 
-# echo "🦀 Checking Rust and Cargo installation..."
-# command -v cargo >/dev/null || sudo dnf -y install rust cargo
+echo "🦀 Checking Rust and Cargo installation..."
+command -v cargo >/dev/null || sudo dnf -y install rust cargo
 
-# echo "📥 Cloning and building bluetui..."
-# [ -d bluetui ] || git clone https://github.com/pythops/bluetui
-# cd bluetui
-# cargo build --release
-# sudo mv target/release/bluetui /usr/local/bin
-# cd ..
+echo "📥 Cloning and building bluetui..."
+[ -d bluetui ] || git clone https://github.com/pythops/bluetui
+cd bluetui
+cargo build --release
+sudo mv target/release/bluetui /usr/local/bin
+cd ..
 
 echo "♻️  Updating all packages and refreshing metadata..."
 sudo dnf update -y
