@@ -40,7 +40,7 @@ echo "📥 Adding Flathub remote if missing..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "📦 Installing Telegram via Snap..."
-sudo snap install telegram-asahi --yes
+sudo snap install telegram-asahi
 
 echo "📦 Installing Galaxy Buds Client via Flatpak..."
 flatpak install -y --noninteractive flathub me.timschneeberger.GalaxyBudsClient
