@@ -53,5 +53,3 @@ if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
 + step 3: install Widevine with:
 
 		sudo widevine-installer
-
-this will fix camera and mic problem, widevine and give you a better overall experience
