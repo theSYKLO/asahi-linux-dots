@@ -1,42 +1,56 @@
 #! /bin/sh
+set -e
 
-curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+[ -f /etc/yum.repos.d/cloudflare-warp.repo ] || \
+curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
 
-sudo dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install \
+  https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+  https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 sudo dnf -y config-manager setopt fedora-cisco-openh264.enabled=1
 
-yes | sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+[ -f /etc/yum.repos.d/vscode.repo ] || \
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | \
+sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+
+sudo dnf makecache --refresh
 
 sudo dnf -y install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-yes | sudo snap install telegram-asahi
-yes | flatpak install flathub me.timschneeberger.GalaxyBudsClient
+sudo snap install telegram-asahi --yes
+flatpak install -y flathub me.timschneeberger.GalaxyBudsClient
 
 sudo dnf copr enable solopasha/hyprland
 
 sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
 
-if [ -d $HOME/.local/bin ]; then
-  cp ./dotfiles/custom-bins/code $HOME/.local/bin/
+if [ -d "$HOME/.local/bin" ]; then
+  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
 else
-  mkdir -p $HOME/.local/bin
-  cp ./dotfiles/custom-bins/code $HOME/.local/bin/
+  mkdir -p "$HOME/.local/bin"
+  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
 fi
 
-mkdir clipse
+mkdir -p clipse
 cd clipse
 wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
 sudo mv clipse /usr/local/bin
 cd ..
 
+command -v cargo >/dev/null || sudo dnf -y install rust cargo
 git clone https://github.com/pythops/bluetui
 cd bluetui
 cargo build --release
 sudo mv target/release/bluetui /usr/local/bin
 cd ..
 
-sudo dnf update -y && reboot
+sudo dnf update -y --refresh
+
+echo "✅ Installation complete."
+read -p "Would you like to reboot now? (y/N): " confirm
+[ "$confirm" = "y" ] && reboot
