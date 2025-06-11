@@ -1,34 +1,50 @@
 #! /bin/sh
-set -e
+set -ex  # -e: exit on error, -x: print commands as executed
 
+echo "🛠️  Starting setup script..."
+
+echo "📥 Checking and adding Cloudflare Warp repo if missing..."
 [ -f /etc/yum.repos.d/cloudflare-warp.repo ] || \
 curl -fsSL https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
 
+echo "📦 Installing RPM Fusion free & nonfree repos..."
 sudo dnf -y install \
   https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
+echo "⚙️  Enabling fedora-cisco-openh264 codec..."
 sudo dnf -y config-manager setopt fedora-cisco-openh264.enabled=1
 
+echo "🔑 Importing Microsoft GPG key..."
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
+echo "📥 Checking and adding VSCode repo if missing..."
 [ -f /etc/yum.repos.d/vscode.repo ] || \
 echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | \
 sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 
+echo "♻️  Refreshing package metadata cache..."
 sudo dnf makecache --refresh
 
+echo "📦 Installing essential packages..."
 sudo dnf -y install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd
 
+echo "📥 Adding Flathub remote if missing..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+echo "📦 Installing Telegram via Snap..."
 sudo snap install telegram-asahi --yes
-flatpak install -y flathub me.timschneeberger.GalaxyBudsClient
 
-sudo dnf copr enable solopasha/hyprland
+echo "📦 Installing Galaxy Buds Client via Flatpak..."
+flatpak install -y --noninteractive flathub me.timschneeberger.GalaxyBudsClient
 
+echo "🚀 Enabling Hyprland COPR repo..."
+sudo dnf copr enable solopasha/hyprland -y
+
+echo "📦 Installing Hyprland and related packages..."
 sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
 
+echo "📁 Setting up local bin directory and copying custom code launcher..."
 if [ -d "$HOME/.local/bin" ]; then
   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
 else
@@ -36,21 +52,32 @@ else
   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
 fi
 
+echo "📦 Downloading and installing clipse..."
 mkdir -p clipse
 cd clipse
 wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
 sudo mv clipse /usr/local/bin
 cd ..
 
+echo "🦀 Checking Rust and Cargo installation..."
 command -v cargo >/dev/null || sudo dnf -y install rust cargo
-git clone https://github.com/pythops/bluetui
+
+echo "📥 Cloning and building bluetui..."
+[ -d bluetui ] || git clone https://github.com/pythops/bluetui
 cd bluetui
 cargo build --release
 sudo mv target/release/bluetui /usr/local/bin
 cd ..
 
+echo "♻️  Updating all packages and refreshing metadata..."
 sudo dnf update -y --refresh
 
 echo "✅ Installation complete."
+
 read -p "Would you like to reboot now? (y/N): " confirm
-[ "$confirm" = "y" ] && reboot
+if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]; then
+  echo "🔄 Rebooting system..."
+  reboot
+else
+  echo "💡 Reboot skipped. Remember to reboot later if needed."
+fi
