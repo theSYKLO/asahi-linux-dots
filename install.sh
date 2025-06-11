@@ -1,5 +1,5 @@
 #! /bin/sh
-set -ex  # -e: exit on error, -x: print commands as executed
+set -e
 
 echo "🛠️  Starting setup script..."
 
@@ -27,8 +27,8 @@ echo "♻️  Refreshing package metadata cache..."
 sudo dnf makecache --refresh
 
 echo "📦 Installing essential packages..."
-sudo dnf -y install --skip-unavailable code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd 2>&1 | tee dnf-install.log
-grep -i 'Skipping unavailable package' dnf-install.log > skipped-dnf-packages.log
+sudo dnf -y --skip-unavailable install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd 2>&1 | tee dnf-install.log 
+grep -i 'Skipping unavailable package' dnf-install.log > skipped-dnf-packages.log || true
 
 if [ -s skipped-dnf-packages.log ]; then
   echo "⚠️  Some packages were skipped:"
@@ -50,8 +50,8 @@ echo "🚀 Enabling Hyprland COPR repo..."
 sudo dnf copr enable solopasha/hyprland -y
 
 echo "📦 Installing Hyprland and related packages..."
-sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best  2>&1 | tee hypr-install.log
-grep -i 'Skipping unavailable package' hypr-install.log > skipped-hypr-packages.log
+sudo dnf install -y --skip-unavailable hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best  2>&1 | tee hypr-install.log
+grep -i 'Skipping unavailable package' hypr-install.log > skipped-hypr-packages.log || true
 
 if [ -s skipped-hypr-packages.log ]; then
   echo "⚠️  Some packages were skipped:"
@@ -60,33 +60,33 @@ else
   echo "✅ All packages installed successfully."
 fi
 
-echo "📁 Setting up local bin directory and copying custom code launcher..."
-if [ -d "$HOME/.local/bin" ]; then
-  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
-else
-  mkdir -p "$HOME/.local/bin"
-  cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
-fi
+# echo "📁 Setting up local bin directory and copying custom code launcher..."
+# if [ -d "$HOME/.local/bin" ]; then
+#   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
+# else
+#   mkdir -p "$HOME/.local/bin"
+#   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
+# fi
 
-echo "📦 Downloading and installing clipse..."
-mkdir -p clipse
-cd clipse
-wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
-sudo mv clipse /usr/local/bin
-cd ..
+# echo "📦 Downloading and installing clipse..."
+# mkdir -p clipse
+# cd clipse
+# wget -c https://github.com/savedra1/clipse/releases/download/v1.1.0/clipse_1.1.0_linux_arm64.tar.gz -O - | tar -xz
+# sudo mv clipse /usr/local/bin
+# cd ..
 
-echo "🦀 Checking Rust and Cargo installation..."
-command -v cargo >/dev/null || sudo dnf -y install rust cargo
+# echo "🦀 Checking Rust and Cargo installation..."
+# command -v cargo >/dev/null || sudo dnf -y install rust cargo
 
-echo "📥 Cloning and building bluetui..."
-[ -d bluetui ] || git clone https://github.com/pythops/bluetui
-cd bluetui
-cargo build --release
-sudo mv target/release/bluetui /usr/local/bin
-cd ..
+# echo "📥 Cloning and building bluetui..."
+# [ -d bluetui ] || git clone https://github.com/pythops/bluetui
+# cd bluetui
+# cargo build --release
+# sudo mv target/release/bluetui /usr/local/bin
+# cd ..
 
 echo "♻️  Updating all packages and refreshing metadata..."
-sudo dnf update -y --refresh
+sudo dnf update -y
 
 echo "✅ Installation complete."
 
