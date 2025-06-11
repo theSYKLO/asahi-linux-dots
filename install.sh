@@ -60,12 +60,19 @@ else
   echo "✅ All packages installed successfully."
 fi
 
-echo "📁 Setting up local bin directory and copying custom code launcher..."
+echo "📁 Setting up needed directory and copying dotfiles..."
 if [ -d "$HOME/.local/bin" ]; then
   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
 else
   mkdir -p "$HOME/.local/bin"
   cp ./dotfiles/custom-bins/code "$HOME/.local/bin/"
+fi
+
+if [ -d "$HOME/.config" ]; then
+  cp ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
+else
+  mkdir -p "$HOME/.config"
+  cp ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
 fi
 
 echo "📦 Downloading and installing clipse..."
