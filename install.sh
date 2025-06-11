@@ -27,7 +27,14 @@ echo "♻️  Refreshing package metadata cache..."
 sudo dnf makecache --refresh
 
 echo "📦 Installing essential packages..."
-sudo dnf -y install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd
+sudo dnf -y install --skip-unavailable code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd 2>&1 | tee dnf-install.log
+
+if [ -s skipped-packages.log ]; then
+  echo "⚠️  Some packages were skipped:"
+  cat skipped-packages.log
+else
+  echo "✅ All packages installed successfully."
+fi
 
 echo "📥 Adding Flathub remote if missing..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
