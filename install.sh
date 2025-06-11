@@ -28,10 +28,11 @@ sudo dnf makecache --refresh
 
 echo "📦 Installing essential packages..."
 sudo dnf -y install --skip-unavailable code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd 2>&1 | tee dnf-install.log
+grep -i 'Skipping unavailable package' dnf-install.log > skipped-dnf-packages.log
 
-if [ -s skipped-packages.log ]; then
+if [ -s skipped-dnf-packages.log ]; then
   echo "⚠️  Some packages were skipped:"
-  cat skipped-packages.log
+  cat skipped-dnf-packages.log
 else
   echo "✅ All packages installed successfully."
 fi
@@ -49,7 +50,15 @@ echo "🚀 Enabling Hyprland COPR repo..."
 sudo dnf copr enable solopasha/hyprland -y
 
 echo "📦 Installing Hyprland and related packages..."
-sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best
+sudo dnf install -y hyprland nm-applet dunst qt5ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best  2>&1 | tee hypr-install.log
+grep -i 'Skipping unavailable package' hypr-install.log > skipped-hypr-packages.log
+
+if [ -s skipped-hypr-packages.log ]; then
+  echo "⚠️  Some packages were skipped:"
+  cat skipped-hypr-packages.log
+else
+  echo "✅ All packages installed successfully."
+fi
 
 echo "📁 Setting up local bin directory and copying custom code launcher..."
 if [ -d "$HOME/.local/bin" ]; then
