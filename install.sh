@@ -27,7 +27,7 @@ echo "♻️  Refreshing package metadata cache..."
 sudo dnf makecache --refresh
 
 echo "📦 Installing essential packages..."
-sudo dnf -y --skip-unavailable install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd dbus-devel pkgconf-pkg-config 2>&1 | tee dnf-install.log 
+sudo dnf -y install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd dbus-devel pkgconf-pkg-config --skip-unavailable 2>&1 | tee dnf-install.log 
 grep -i 'Skipping unavailable package' dnf-install.log > skipped-dnf-packages.log || true
 
 if [ -s skipped-dnf-packages.log ]; then
@@ -50,7 +50,7 @@ echo "🚀 Enabling Hyprland COPR repo..."
 sudo dnf copr enable solopasha/hyprland -y
 
 echo "📦 Installing Hyprland and related packages..."
-sudo dnf install -y --skip-unavailable hyprland nm-applet dunst qt6ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --best  2>&1 | tee hypr-install.log
+sudo dnf install -y hyprland nm-applet dunst qt6ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --skip-unavailable --best  2>&1 | tee hypr-install.log
 grep -i 'Skipping unavailable package' hypr-install.log > skipped-hypr-packages.log || true
 
 if [ -s skipped-hypr-packages.log ]; then
@@ -69,10 +69,10 @@ else
 fi
 
 if [ -d "$HOME/.config" ]; then
-  cp ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
+  cp -r ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
 else
   mkdir -p "$HOME/.config"
-  cp ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
+  cp -r ./dotfiles/hypr ./dotfiles/waybar ./dotfiles/wofi "$HOME/.config/"
 fi
 
 echo "📦 Downloading and installing clipse..."
