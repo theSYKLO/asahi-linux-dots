@@ -50,7 +50,7 @@ echo "🚀 Enabling Hyprland COPR repo..."
 sudo dnf copr enable solopasha/hyprland -y
 
 echo "📦 Installing Hyprland and related packages..."
-sudo dnf install -y hyprland nm-applet dunst qt6ct warp-taskbar wl-clipboard waybar kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --skip-unavailable --best  2>&1 | tee hypr-install.log
+sudo dnf install -y hyprland nm-applet dunst qt6ct warp-taskbar wl-clipboard waybar-git kitty aquamarine hyprgraphics hypridle hyprlang hyprlock hyprland-qt-support hyprland-qtutils hyprpaper hyprpicker hyprcursor hyprpolkitagent hyprshot hyprsunset hyprsysteminfo hyprutils xdg-desktop-portal-hyprland --skip-unavailable --best  2>&1 | tee hypr-install.log
 grep -i 'Skipping unavailable package' hypr-install.log > skipped-hypr-packages.log || true
 
 if [ -s skipped-hypr-packages.log ]; then
