@@ -27,7 +27,7 @@ echo "♻️  Refreshing package metadata cache..."
 sudo dnf makecache --refresh
 
 echo "📦 Installing essential packages..."
-sudo dnf -y --skip-unavailable install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd 2>&1 | tee dnf-install.log 
+sudo dnf -y --skip-unavailable install code warp-cli gcc g++ make cmake git gh vim nvim btop fastfetch flatpak snapd dbus-devel pkgconf-pkg-config 2>&1 | tee dnf-install.log 
 grep -i 'Skipping unavailable package' dnf-install.log > skipped-dnf-packages.log || true
 
 if [ -s skipped-dnf-packages.log ]; then
