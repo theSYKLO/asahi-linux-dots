@@ -13,6 +13,7 @@ this repo and every dot file is made with personal use in mind so use this repo 
 
 > [!CAUTION]
 >this repo is created for asahi linux and I don't guarantee it will work on Fedora but you can try it
+> install.sh don't works great as I test it in this date so please see the commands in it and do a manual install till the fix and final install.sh version get released
 
 ## Setup
 for this you just need to run `install.sh` use the fallowing command to install: <br/>
