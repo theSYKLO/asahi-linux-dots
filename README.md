@@ -37,13 +37,14 @@ there is custom vscode bin in `dotfiles/custom-bins` that will fix blury text in
 you don't have to do anything `install.sh` will handle the file placement
 
 ## firefox no Audio/Video input and Widevine fix
-if you can use your mic and webcam in sites like google meet, zoom, etc.. <br/>
+> [!NOTE]
+> webcam problem is fixed in ver 141
+
+if you can't use your mic and webcam in sites like google meet, zoom, etc.. follow these steps <br/>
 
 + step 1: you have to download Firefox from the main website <br/>
 
 + step 2: extract `firefox-*.tar.gz` (I assumed that the extracted folder is in `~/Downloads/firefox`) and replace it content using: <br/>
-> [!NOTE]
->first line of command is for copying the custom asahi setting that make widevine installer work so we copy that before we delete the dnf firefox files and then place our official firefox in it
 
 		sudo cp -r /usr/lib64/firefox/defaults/pref Downloads/firefox/defaults/
 		rm -rf /usr/lib64/firfox
