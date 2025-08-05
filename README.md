@@ -8,8 +8,8 @@ this repo and every dot file is made with personal use in mind so use this repo 
 ![after opening some apps](./Screenshots/appsOpen.png?raw=true)
 
 ## Prerequisites
-1. Fedora Asahi remix
-2. git
+1. git
+2. Fedora Asahi remix (for install script configs are usable)
 
 > [!CAUTION]
 > 1. this repo is created for asahi linux and I don't guarantee it will work on Fedora but you can try it.
